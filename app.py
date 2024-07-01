@@ -9,18 +9,26 @@ st.set_page_config(page_title="MobileNetV2 Image Classifier", page_icon="🖼️
 
 @st.cache_resource
 def load_model():
+    # Ensure the model is loaded with correct weights
     return MobileNetV2(weights='imagenet')
 
 def preprocess_image(img):
+    # Resize image to 224x224 pixels, which is expected by MobileNetV2
     img = img.resize((224, 224))
+    # Convert image to array
     x = img_to_array(img)
+    # Add a batch dimension
     x = np.expand_dims(x, axis=0)
+    # Preprocess the input for MobileNetV2
     x = preprocess_input(x)
     return x
 
 def predict(img):
+    # Preprocess the image
     x = preprocess_image(img)
+    # Predict using the model
     preds = model.predict(x)
+    # Decode the top 3 predictions
     return decode_predictions(preds, top=3)[0]
 
 # Load the model
