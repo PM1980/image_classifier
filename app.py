@@ -46,7 +46,7 @@ if uploaded_file is not None:
     st.subheader("Predictions:")
     for i, (imagenet_id, label, score) in enumerate(predictions):
         st.write(f"{i+1}. {label.title()} ({score:.2%})")
-        st.progress(score)  # Ensure score is between 0 and 1
+        st.progress(float(score))  # Convert score to Python float
 
 # Add some information about the app
 st.sidebar.title("About")
