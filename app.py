@@ -1,6 +1,6 @@
 import streamlit as st
-from tensorflow.keras.applications import MobileNetV3Large, decode_predictions
-from tensorflow.keras.applications.mobilenet_v3 import preprocess_input
+from tensorflow.keras.applications import MobileNetV3Large
+from tensorflow.keras.applications.mobilenet_v3 import preprocess_input, decode_predictions
 from tensorflow.keras.preprocessing.image import img_to_array
 import numpy as np
 from PIL import Image
