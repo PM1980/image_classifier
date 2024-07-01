@@ -59,4 +59,7 @@ st.sidebar.info(
 # Add a footer
 st.sidebar.title("Made with")
 st.sidebar.write(
-    "[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&lo
+    "[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)](https://streamlit.io/)"
+    + " "
+    + "[![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)"
+)
