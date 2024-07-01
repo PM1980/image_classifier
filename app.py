@@ -1,5 +1,6 @@
 import streamlit as st
-from tensorflow.keras.applications.mobilenet_v3 import MobileNetV3Large, preprocess_input, decode_predictions
+from tensorflow.keras.applications import MobileNetV3Large
+from tensorflow.keras.applications.mobilenet_v3 import preprocess_input, decode_predictions
 from tensorflow.keras.preprocessing.image import img_to_array
 import numpy as np
 from PIL import Image
@@ -48,13 +49,14 @@ if uploaded_file is not None:
     
     # Make prediction
     with st.spinner('Analyzing the image...'):
-        predictions = predict(image)
-    
-    # Display results
-    st.subheader("Predictions:")
-    for i, (imagenet_id, label, score) in enumerate(predictions):
-        st.write(f"{i+1}. {label.title()} ({score:.2%})")
-        st.progress(float(score))  # Convert score to Python float
+        try:
+            predictions = predict(image)
+            st.subheader("Predictions:")
+            for i, (imagenet_id, label, score) in enumerate(predictions):
+                st.write(f"{i+1}. {label.title()} ({score:.2%})")
+                st.progress(float(score))  # Convert score to Python float
+        except Exception as e:
+            st.error(f"Error during prediction: {e}")
 
 # Add some information about the app
 st.sidebar.title("About")
