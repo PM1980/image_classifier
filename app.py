@@ -1,9 +1,8 @@
 import streamlit as st
 from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input, decode_predictions
-from tensorflow.keras.preprocessing import image
+from tensorflow.keras.preprocessing.image import img_to_array
 import numpy as np
 from PIL import Image
-import io
 
 # Set page title and favicon
 st.set_page_config(page_title="MobileNetV2 Image Classifier", page_icon="🖼️")
@@ -14,7 +13,7 @@ def load_model():
 
 def preprocess_image(img):
     img = img.resize((224, 224))
-    x = image.img_to_array(img)
+    x = img_to_array(img)
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
     return x
@@ -60,6 +59,4 @@ st.sidebar.info(
 # Add a footer
 st.sidebar.title("Made with")
 st.sidebar.write(
-    "[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)](https://streamlit.io/)"
-    "[![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)"
-)
+    "[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&lo
